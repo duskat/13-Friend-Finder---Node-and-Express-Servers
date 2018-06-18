@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "9.7.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/duskat/13-Friend-Finder---Node-and-Express-Servers.git"
@@ -25,7 +28,5 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "path": "^0.12.7"
-  },
-
- 
+  }
 }
