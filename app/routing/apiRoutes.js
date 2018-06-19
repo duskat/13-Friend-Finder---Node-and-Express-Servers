@@ -9,26 +9,25 @@ function arrayDifference(A, B) {
       return c;
 }
 
-function getBestFriend (friendsArray){
+function getBestFriend (pickles){
     var friendsScoreTracker = [];
     //to find maximum number in array
-    
 
-    for (var i = 0; i < friendsArray.length; i++){
-        var lastFriend = friendsArray[friendsArray.length-1];
-        console.log(lastFriend);
-        var indexOflastFriend = friendsArray.indexOf(lastFriend);
-        var scoreLastFriend = friendsArray[indexOflastFriend].scores;
-        // friendsArray[i].scores - scoreLastFriend
-        arrayDifference(friendsArray[i].scores, scoreLastFriend);
-        friendsScoreTracker.push(arrayDifference);
+    for (var i = 0; i < pickles.length; i++){
+        var lastFriend = pickles[pickles.length-1];
+        var indexOflastFriend = pickles.indexOf(lastFriend);
+        var scoreLastFriend = pickles[indexOflastFriend].scores;
+        // pickles[i].scores - scoreLastFriend
+        var c = arrayDifference(pickles[i].scores, scoreLastFriend);
+        friendsScoreTracker.push(c);
         // friendsScoreTracker.push(arrayDifference);    
     }
-    var maxValue = Math.max(friendsScoreTracker);
-    console.log(maxValue)
+    var maxValue = Math.max(...friendsScoreTracker);
+    console.log(maxValue);  
+    console.log(friendsScoreTracker)
     var matchScore = friendsScoreTracker.indexOf(maxValue);
 
-    return friendsArray[matchScore]
+    return pickles[matchScore]
 }
 
 module.exports = function(app){
@@ -37,7 +36,7 @@ module.exports = function(app){
     });
     app.post("/api/friends", function(req, res){
         friendsArray.push(req.body);
-        res.json(getBestFriend(friendsArray))
+        res.json(getBestFriend(friendsArray));
     });
 
 }
